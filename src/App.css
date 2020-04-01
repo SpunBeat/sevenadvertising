@@ -1,38 +1,208 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  position: relative;
+  background-position-x: 10%;
+  background-position-y: 10%;
+  transition-timing-function: ease-in;
+  animation-name: Background;
+  animation-duration: 1s;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@keyframes Background {
+  from {
+    background-position-x: 0;
+    background-position-y: 0;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  to {
+    background-position-x: 10%;
+    background-position-y: 10%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+.sevenVector {
+  background-image: url('./assets/img/seven-vector.png');
+  background-size: 100% 113%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-position: top center;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  animation-name: App-logo;
+  animation-duration: 2s;
+}
+@keyframes App-logo {
+  from {
+    background-size: 30% 30%;
+  }
+
+  to {
+    background-size:100% 113%;
+  }
+}
+
+.appContainer {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0 50px;
+  box-sizing: border-box;
+}
+
+.superior {
+  padding-top: 20vh;
+  font-weight: 600;
+  text-align: left;
+  opacity: 0;
+}
+
+.superior.active {
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+.superiorTitle {
+  font-size: 8vh;
+}
+
+.superiorSubtitle {
+  font-size: 4vh;
+  margin-left: 20vw;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.menuWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 50px;
+  z-index: 1;
+  opacity: 0;
+}
+
+.menuWrapper.active {
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+.menu {
   display: flex;
-  flex-direction: column;
+  border-right: 1px solid rgba(250, 250, 250, 0.3);
+}
+
+.menuItem {
+  width: calc(calc(100vw - 100px) / 5);
+  height: 100vh;
+  border: 1px solid rgba(250, 250, 250, 0.3);
+  border-right: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.menuItemInner {
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 17vh;
+  border-top: 1px solid rgba(250, 250, 250, 0.3);
+  border-bottom: 1px solid rgba(250, 250, 250, 0.3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.menuItemInner.active,
+.menuItemInner:hover {
+  border: 2px solid rgba(250, 250, 250, 0.9);
+}
+
+.inferior {
+  font-weight: 600;
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  display: flex;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.3);
+  padding: 0 50px 50px;
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+  z-index: 4;
+  opacity: 0;
+
+}
+
+.inferior.active {
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+.inferiorInner {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.inferiorWrapper {
+  width: 440px;
+  text-align: right;
+}
+@media only screen and (min-width: 1200px) {
+  .appContainer {
+    padding: 0 100px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .menuWrapper {
+    padding: 0 100px;
+  }
+
+  .inferior {
+    padding: 0 100px 50px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .appContainer {
+    padding: 0 100px;
+  }
+
+  .menuWrapper {
+    padding: 0 100px;
+  }
+
+  .inferior {
+    padding: 0 100px 50px;
   }
 }
